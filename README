@@ -1,0 +1,28 @@
+The basic idea of this project is trying a combination of Apache Camel as part of a
+BPEL-Orchestrated Process.
+
+At first this is a primitive example of using CXF as Camel-Endpoint with multiversion-support.
+
+This is a Eclipse & Maven project, created from an Apache Camel-Spring maven archetype Version 2.7. (or so)
+
+Build:
+mvn clean install
+
+Run:
+mvn camel:run
+
+This starts a jetty-server and publishes a SOAP-Webservice.
+Locate the wsdl at 
+
+	http://localhost:9000/order?wsdl
+	
+I recommend using SOAP-UI for trying it out. 
+(Well you could use Camel, but this is kinda boring (client code is too similar to the provider-code) 
+in that case. ;-))
+
+Right now there are two operations as Version 1 and Version 2 - Other Examples will follow
+
+
+
+
+ 
