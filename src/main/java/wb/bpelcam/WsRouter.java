@@ -1,10 +1,9 @@
 package wb.bpelcam;
 
-import java.util.Map;
-
-import org.apache.camel.Exchange;
-import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.converter.jaxb.JaxbDataFormat;
+import org.apache.camel.spi.DataFormat;
+
 
 import wb.bpelcam.processors.OrderContentsProcessor;
 import wb.bpelcam.processors.PrintHeaderProcessor;
@@ -18,6 +17,8 @@ public class WsRouter extends RouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
+		
+		DataFormat jaxb = new JaxbDataFormat("com.innoq.bpel");
 		
 			from("cxf:bean:orderEndpoint")
 				.process(new PrintHeaderProcessor())
@@ -33,11 +34,17 @@ public class WsRouter extends RouteBuilder {
 			
 			from("seda:handleV1Orders")
 				.convertBodyTo(OrderInformation1.class)
-				.process(new OrderContentsProcessor());
+				.process(new OrderContentsProcessor())
+				.marshal(jaxb)
+				.setHeader("CamelFileName", constant("Order1"))
+				.to("file://target/output1");
 		
 			from("seda:handleV2Orders")
 				.convertBodyTo(OrderInformation2.class)
-				.process(new OrderContentsProcessor());
+				.process(new OrderContentsProcessor())
+				.marshal(jaxb)
+				.setHeader("CamelFileName", constant("Order2"))
+				.to("file://target/output1");
 
 		
 	}
