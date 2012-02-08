@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="BPELCAM" resourceRoot="" soapui-version="4.0.1.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="OrderBinding" type="wsdl" bindingName="{http://bpel.innoq.com}OrderBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:9000/order?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:9000/order?wsdl"><con:part><con:url>http://localhost:9000/order?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://bpel.innoq.com" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://bpel.innoq.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://bpel.innoq.com">
+      <xs:element name="orderInformation1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="partName" type="xs:string"/>
+            <xs:element name="amount" type="xs:int"/>
+            <xs:element name="customerName" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="orderInformation2">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="partName" type="xs:string"/>
+            <xs:element name="amount" type="xs:int"/>
+            <xs:element name="customerName" type="xs:string"/>
+            <xs:element name="Address" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="version" type="xs:int"/>
+      <xs:element name="resultCode" type="xs:string"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="purchaseOrder2">
+    <wsdl:part element="tns:orderInformation2" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="purchaseOrder1">
+    <wsdl:part element="tns:orderInformation1" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="orderResult">
+    <wsdl:part element="tns:resultCode" name="resultCode"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="OrderEndpoint">
+    <wsdl:operation name="order1">
+      <wsdl:input message="tns:purchaseOrder1"></wsdl:input>
+      <wsdl:output message="tns:orderResult"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="order2">
+      <wsdl:input message="tns:purchaseOrder2"></wsdl:input>
+      <wsdl:output message="tns:orderResult"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OrderBinding" type="tns:OrderEndpoint">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="order1">
+      <soap:operation soapAction="http://bpel.innoq.com/Order" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="order2">
+      <soap:operation soapAction="http://bpel.innoq.com/Order" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OrderEndpointService">
+    <wsdl:port binding="tns:OrderBinding" name="OrderService">
+      <soap:address location="http://localhost:9000/order/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:9000/order/</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://bpel.innoq.com/Order" name="order1" bindingOperationName="order1" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9000/order/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bpel="http://bpel.innoq.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <bpel:orderInformation1>
+         <partName>motor</partName>
+         <amount>2</amount>
+         <customerName>Me</customerName>
+      </bpel:orderInformation1>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://bpel.innoq.com/Order"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="http://bpel.innoq.com/Order" name="order2" bindingOperationName="order2" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9000/order/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bpel="http://bpel.innoq.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <bpel:orderInformation2>
+         <partName>Lenkrad</partName>
+         <amount>1</amount>
+         <customerName>Him</customerName>
+         <Address>Grünweg 3/ 3333 Obergelb</Address>
+      </bpel:orderInformation2>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://bpel.innoq.com/Order"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:sensitiveInformation/></con:soapui-project>

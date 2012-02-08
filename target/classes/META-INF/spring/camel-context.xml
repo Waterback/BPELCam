@@ -15,6 +15,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camel="http://camel.apache.org/schema/spring"
 	xmlns:cxf="http://camel.apache.org/schema/cxf"
+	xmlns:wsdl="http://bpel.innoq.com/order/v1"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd 
        http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd">
@@ -31,17 +32,23 @@
 	</bean>
 
 	<import resource="classpath:META-INF/cxf/cxf-extension-http-jetty.xml" />
-	<cxf:cxfEndpoint id="orderEndpoint" address="http://localhost:9000/order/"
-		serviceClass="com.innoq.bpel.OrderEndpoint" wsdlURL="wsdl/order.wsdl">
+	<cxf:cxfEndpoint id="orderEndpoint-v1.0" serviceClass="com.innoq.bpel.order.v1.OrderServiceV10" address="http://localhost:9000/order-v1.0/" 
+		 wsdlURL="/wsdl/orderV1.wsdl" serviceName="wsdl:OrderService_v1_0">
 		<cxf:properties>
 			<entry key="dataFormat" value="POJO" />
 		</cxf:properties>
 	</cxf:cxfEndpoint>
-
+		<cxf:cxfEndpoint id="orderEndpoint-v1.1" serviceClass="com.innoq.bpel.order.v1.OrderServiceV11" address="http://localhost:9000/order-v1.1/" 
+		 wsdlURL="/wsdl/orderV1.wsdl" serviceName="wsdl:OrderService_v1_1">
+		<cxf:properties>
+			<entry key="dataFormat" value="POJO" />
+		</cxf:properties>
+	</cxf:cxfEndpoint>
 	<camel:camelContext xmlns="http://camel.apache.org/schema/spring" trace="true">
 		<camel:package>wb.bpelcam</camel:package>
 	</camel:camelContext>
 
+	<!--  -->
 
 </beans>
 	

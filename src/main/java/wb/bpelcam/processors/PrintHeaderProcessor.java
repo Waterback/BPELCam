@@ -13,6 +13,7 @@ public class PrintHeaderProcessor implements Processor {
 		for (String key : m.keySet()) {
 			System.out.println(key + " -> " + m.get(key));
 		}
+		System.out.println(".-------.... End Headers");
 	}
 
 }
