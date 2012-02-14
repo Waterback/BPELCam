@@ -4,6 +4,8 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.builder.xml.Namespaces;
+import org.apache.camel.converter.jaxb.JaxbDataFormat;
+import org.apache.camel.spi.DataFormat;
 
 import wb.bpelcam.processors.OrderContentsProcessor;
 
@@ -24,6 +26,9 @@ public class WsRouter extends RouteBuilder {
 		Namespaces ns_v10 = new Namespaces("c10", "http://bpel.innoq.com/order/v1/sv0");
 		Namespaces ns_v11 = new Namespaces("c11", "http://bpel.innoq.com/order/v1/sv1");
 		
+		DataFormat jaxb10 = new JaxbDataFormat("com.innoq.bpel.order.v1.sv0");
+		DataFormat jaxb11 = new JaxbDataFormat("com.innoq.bpel.order.v1.sv1");
+		
 		from("jetty:http://localhost:9080/orderservice?minThreads=5")
 			.process(new ContentPrinter())
 			.choice()
@@ -35,14 +40,21 @@ public class WsRouter extends RouteBuilder {
 					.to("seda:fault");
 
 		from("seda:handleV1_0_Orders")
-			.id("handleOrders")
-			.filter().xpath("//c10:orderInformation", ns_v10)
+			.id("handleOrders_v10")
+			.transform().xpath("//c10:orderInformation", ns_v10)
+			.unmarshal(jaxb10)
+			.process(new OrderContentsProcessor())
+			.marshal(jaxb10)
 			.to("seda:save")
 			.process(new ResponseBuilderProcessor(10));
 		
 		from("seda:handleV1_1_Orders")
-			.id("handleOrders")
-			.filter().xpath("//c11:orderInformation", ns_v11)
+			.id("handleOrders_v11")
+			.transform().xpath("//c11:orderInformation", ns_v11)
+			.process(new ContentPrinter())
+			.unmarshal(jaxb11)
+			.process(new OrderContentsProcessor())
+			.marshal(jaxb11)
 			.to("seda:save")
 			.process(new ResponseBuilderProcessor(11));
 

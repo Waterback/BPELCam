@@ -12,7 +12,6 @@ public class OrderContentsProcessor implements Processor {
 	public void process(Exchange exchange) throws Exception {
 		
 		System.out.println("In: ----" + exchange.getIn().getBody());
-		System.out.println("Out: ----" + exchange.getOut().getBody());
 		Object o =  exchange.getIn().getBody();
 		if (o == null) {
 			exchange.getIn().setBody("Empty Request");

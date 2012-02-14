@@ -14,14 +14,15 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camel="http://camel.apache.org/schema/spring"
-	xmlns:cxf="http://camel.apache.org/schema/cxf"
-	xmlns:wsdl="http://bpel.innoq.com/order/v1"
+	xmlns:cxf="http://camel.apache.org/schema/cxf" xmlns:v1_0="http://bpel.innoq.com/order/v1/sv0"
+	xmlns:v1_1="http://bpel.innoq.com/order/v1/sv1"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd 
        http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd">
 
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-http-jetty.xml" />
 
 	<bean id="traceFormatter"
 		class="org.apache.camel.processor.interceptor.DefaultTraceFormatter">
@@ -31,24 +32,31 @@
 		<property name="maxChars" value="250" />
 	</bean>
 
-	<import resource="classpath:META-INF/cxf/cxf-extension-http-jetty.xml" />
-	<cxf:cxfEndpoint id="orderEndpoint-v1.0" serviceClass="com.innoq.bpel.order.v1.OrderServiceV10" address="http://localhost:9000/order-v1.0/" 
-		 wsdlURL="/wsdl/orderV1.wsdl" serviceName="wsdl:OrderService_v1_0">
+	<bean id="jetty" class="org.apache.camel.component.jetty.JettyHttpComponent">
+	</bean>
+
+	<cxf:cxfEndpoint id="orderEndpoint-v1.0"
+		serviceClass="com.innoq.bpel.order.v1.sv0.OrderEndpoint" address="http://localhost:9000/order10"
+		wsdlURL="/wsdl/orderV1_0.wsdl">
 		<cxf:properties>
-			<entry key="dataFormat" value="POJO" />
+			<entry key="dataFormat" value="PAYLOAD" />
+			<entry key="publishedEndpointUrl" value="http://localhost:9080/orderservice" />
 		</cxf:properties>
 	</cxf:cxfEndpoint>
-		<cxf:cxfEndpoint id="orderEndpoint-v1.1" serviceClass="com.innoq.bpel.order.v1.OrderServiceV11" address="http://localhost:9000/order-v1.1/" 
-		 wsdlURL="/wsdl/orderV1.wsdl" serviceName="wsdl:OrderService_v1_1">
+	<cxf:cxfEndpoint id="orderEndpoint-v1.1"
+		serviceClass="com.innoq.bpel.order.v1.sv1.OrderEndpoint" address="http://localhost:9000/order11"
+		wsdlURL="/wsdl/orderV1_1.wsdl">
 		<cxf:properties>
-			<entry key="dataFormat" value="POJO" />
+			<entry key="dataFormat" value="PAYLOAD" />
+			<entry key="publishedEndpointUrl" value="http://localhost:9080/orderservice" />
 		</cxf:properties>
 	</cxf:cxfEndpoint>
-	<camel:camelContext xmlns="http://camel.apache.org/schema/spring" trace="true">
+	<camel:camelContext xmlns="http://camel.apache.org/schema/spring"
+		trace="true" streamCache="true">
 		<camel:package>wb.bpelcam</camel:package>
 	</camel:camelContext>
 
-	<!--  -->
+	<!-- -->
 
 </beans>
 	
