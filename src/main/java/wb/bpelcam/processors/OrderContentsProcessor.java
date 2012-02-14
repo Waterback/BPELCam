@@ -11,9 +11,14 @@ public class OrderContentsProcessor implements Processor {
 	@Override
 	public void process(Exchange exchange) throws Exception {
 		
-		System.out.println("----");
+		System.out.println("In: ----" + exchange.getIn().getBody());
+		System.out.println("Out: ----" + exchange.getOut().getBody());
 		Object o =  exchange.getIn().getBody();
-
+		if (o == null) {
+			exchange.getIn().setBody("Empty Request");
+			return;
+		}
+			 
 		Class clazz = o.getClass();
 		System.out.println("---- " + clazz.getName());
 		Method[] m = clazz.getDeclaredMethods();

@@ -21,27 +21,46 @@
 
 	<name>A Camel Route</name>
 	<url>http://www.myorganization.org</url>
+	<scm>
+		<connection>scm:svn:http://camelinaction.googlecode.com/svn/trunk</connection>
+		<developerConnection>scm:svn:https://camelinaction.googlecode.com/svn/trunk</developerConnection>
+		<url>http://code.google.com/p/camelinaction/source/browse/</url>
+	</scm>
+	<properties>
+		<activemq-version>5.5.1</activemq-version>
+		<camel-version>2.9.0</camel-version>
+		<cxf-version>2.5.1</cxf-version>
+		<hsqldb-version>1.8.0.10</hsqldb-version>
+		<junit-version>4.10</junit-version>
+		<log4j-version>1.2.16</log4j-version>
+		<spring-version>3.0.6.RELEASE</spring-version>
+		<slf4j-version>1.6.4</slf4j-version>
+		<xbean-version>3.9</xbean-version>
+		<!-- use utf-8 encoding -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-core</artifactId>
-			<version>2.7.2</version>
+			<version>${camel-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-spring</artifactId>
-			<version>2.7.2</version>
+			<version>${camel-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-cxf</artifactId>
-			<version>2.7.2</version>
+			<version>${camel-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-transports-http-jetty</artifactId>
-			<version>2.3.9</version>
+			<version>${cxf-version}</version>
 		</dependency>
 
 
@@ -59,8 +78,34 @@
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-jaxb</artifactId>
-			<version>2.7.2</version>
+			<version>${camel-version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jetty</artifactId>
+			<version>${camel-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -81,7 +126,7 @@
 			<plugin>
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-maven-plugin</artifactId>
-				<version>2.7.2</version>
+				<version>${camel-version}</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.cxf</groupId>
@@ -98,11 +143,11 @@
 							<wsdlOptions>
 								<wsdlOption>
 									<wsdl>
-										${basedir}/src/main/resources/wsdl/orderV1.wsdl
+										${basedir}/src/main/resources/wsdl/orderV1_0.wsdl
             						</wsdl>
-									<extraargs>
-										<extraarg>-impl</extraarg>
-									</extraargs>
+									<wsdl>
+										${basedir}/src/main/resources/wsdl/orderV1_1.wsdl
+            						</wsdl>
 								</wsdlOption>
 							</wsdlOptions>
 						</configuration>
@@ -112,7 +157,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 		</plugins>
 	</build>
 </project>

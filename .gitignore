@@ -1,5 +1,5 @@
-target/classes/**/*
+#target/classes/**/*
 .DS_Store           
-/**/*.class
+#/**/*.class
 
 
