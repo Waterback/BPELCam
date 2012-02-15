@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:orderInformation xmlns:ns2="http://bpel.innoq.com/order/v1/sv0">
-    <partName>motor</partName>
-    <amount>1</amount>
-    <customerName>NIXDRIN</customerName>
-</ns2:orderInformation>
