@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<CarInsuranceFindProcess xmlns="http://bpel.innoq.com/insurance/v2/types">
+    <targetVersion>2</targetVersion>
+    <customerName>YYY</customerName>
+    <yearswithdrivinglicense>29</yearswithdrivinglicense>
+    <car>
+        <fabricant>Nissan</fabricant>
+        <model>Micra</model>
+        <horsepower>129</horsepower>
+    </car>
+    <oldInsurance/>
+</CarInsuranceFindProcess>

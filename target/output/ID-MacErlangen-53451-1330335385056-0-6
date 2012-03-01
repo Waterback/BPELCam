@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<CarInsuranceFindProcess xmlns="http://bpel.innoq.com/insurance/v1/types">
+    <targetVersion>1</targetVersion>
+    <oldInsuranceCSV>HDI-70-80-VK350</oldInsuranceCSV>
+    <customerName>Ich</customerName>
+    <age>35</age>
+    <yearswithdrivinglicense>17</yearswithdrivinglicense>
+    <car>
+        <fabricant>Mercedes</fabricant>
+        <model>B 180</model>
+        <horsepower>140</horsepower>
+    </car>
+</CarInsuranceFindProcess>

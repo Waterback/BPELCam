@@ -9,11 +9,12 @@ public class PrintHeaderProcessor implements Processor {
 
 	@Override
 	public void process(Exchange exchange) throws Exception {
+		System.out.println("-------------- Header ------------------");
 		Map<String, Object> m = (Map<String, Object>) exchange.getIn().getHeaders();
 		for (String key : m.keySet()) {
 			System.out.println(key + " -> " + m.get(key));
 		}
-		System.out.println(".-------.... End Headers");
+		System.out.println("-------------- End Header --------------");
 	}
 
 }

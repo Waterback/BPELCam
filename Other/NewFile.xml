@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+		xmlns:typ="http://bpel.innoq.com/insurance/v1/types" xmlns:c1="http://bpel.innoq.com/insurance/v2/types">
+		<c1:Header />
+		<c1:Body>
+			<c1:CarInsuranceFindProcess>
+				<c1:targetVersion>2</c1:targetVersion>
+				<c1:customerName>Ich</c1:customerName>
+				<c1:age>35</c1:age>
+				<c1:yearswithdrivinglicense>17</c1:yearswithdrivinglicense>
+				<c1:car>
+					<c1:fabricant>Mercedes</c1:fabricant>
+					<c1:model>B 180</c1:model>
+					<c1:horsepower>140</c1:horsepower>
+				</c1:car>
+				<c1:oldInsurance>
+					<c1:insuranceSpecifications>HDI</c1:insuranceSpecifications>
+					<c1:insuranceSpecifications>70</c1:insuranceSpecifications>
+					<c1:insuranceSpecifications>80</c1:insuranceSpecifications>
+					<c1:insuranceSpecifications>VK350</c1:insuranceSpecifications>
+				</c1:oldInsurance>
+			</c1:CarInsuranceFindProcess>
+		</c1:Body>
+	</soapenv:Envelope>
+
+</root>

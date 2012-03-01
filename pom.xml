@@ -106,6 +106,13 @@
 			<version>${spring-version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.jdom</groupId>
+			<artifactId>jdom</artifactId>
+			<version>1.1</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -143,10 +150,10 @@
 							<wsdlOptions>
 								<wsdlOption>
 									<wsdl>
-										${basedir}/src/main/resources/wsdl/orderV1_0.wsdl
+										${basedir}/src/main/resources/wsdl/insuranceV1.wsdl
             						</wsdl>
 									<wsdl>
-										${basedir}/src/main/resources/wsdl/orderV1_1.wsdl
+										${basedir}/src/main/resources/wsdl/insuranceV2.wsdl
             						</wsdl>
 								</wsdlOption>
 							</wsdlOptions>
