@@ -34,10 +34,9 @@
 		<property name="maxChars" value="250" />
 	</bean>
 
-	<bean id="jetty" class="org.apache.camel.component.jetty.JettyHttpComponent">
-	</bean>
+	<bean id="jetty" class="org.apache.camel.component.jetty.JettyHttpComponent" />
 
-	<cxf:cxfEndpoint id="orderEndpoint-v1"
+	<cxf:cxfEndpoint id="insuranceEndpoint-v1"
 		address="http://localhost:9000/process1"
 		wsdlURL="/wsdl/insuranceV1.wsdl">
 		<cxf:properties>
@@ -45,7 +44,7 @@
 			<entry key="publishedEndpointUrl" value="http://localhost:9080/insuranceservice" />
 		</cxf:properties>
 	</cxf:cxfEndpoint>
-	<cxf:cxfEndpoint id="orderEndpoint-v2"
+	<cxf:cxfEndpoint id="insuranceEndpoint-v2"
 		 address="http://localhost:9000/process2"
 		wsdlURL="/wsdl/insuranceV2.wsdl">
 		<cxf:properties>
@@ -57,7 +56,7 @@
 	
 	<camel:camelContext xmlns="http://camel.apache.org/schema/spring"
 		trace="true" streamCache="true">
-		<camel:package>wb.bpelcam</camel:package>
+		<camel:package>com.innoq.bpelcam</camel:package>
 	</camel:camelContext>
 
 	<!-- -->

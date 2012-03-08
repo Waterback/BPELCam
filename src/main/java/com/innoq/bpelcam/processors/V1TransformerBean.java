@@ -1,4 +1,4 @@
-package wb.bpelcam.processors;
+package com.innoq.bpelcam.processors;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -26,7 +26,7 @@ public class V1TransformerBean {
 	Namespace ns_v2 = Namespace.getNamespace("c1",
 			"http://bpel.innoq.com/insurance/v2/types");
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({ "rawtypes" })
 	public String transformV1toV2(@Body String body) throws JDOMException, IOException {
 
 		Element message = parse(body);
@@ -48,7 +48,6 @@ public class V1TransformerBean {
 	}
 
 	private Pair<Element, Element[]> transformInsuranceLine(Element line) {
-		Element parent = line.getParentElement();
 		String linecontent = line.getText();
 		Element newElementForOldInsurance = new Element("oldInsurance", ns_v2);
 		String[] value = linecontent.split("-");

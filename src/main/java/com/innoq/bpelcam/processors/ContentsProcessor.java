@@ -1,11 +1,11 @@
-package wb.bpelcam.processors;
+package com.innoq.bpelcam.processors;
 
 import java.lang.reflect.Method;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 
-public class OrderContentsProcessor implements Processor {
+public class ContentsProcessor implements Processor {
 
 	@SuppressWarnings("rawtypes")
 	@Override

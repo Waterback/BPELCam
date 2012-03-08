@@ -1,4 +1,4 @@
-package wb.bpelcam.processors;
+package com.innoq.bpelcam.processors;
 
 import java.util.Map;
 
