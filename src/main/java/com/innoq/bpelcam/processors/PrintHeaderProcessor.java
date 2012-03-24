@@ -5,6 +5,11 @@ import java.util.Map;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 
+/**
+ * Prints all existing Meta-Data (Headers) of the In-Message.
+ * @author martinh
+ *
+ */
 public class PrintHeaderProcessor implements Processor {
 
 	@Override

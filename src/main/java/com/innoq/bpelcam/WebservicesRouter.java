@@ -11,6 +11,13 @@ import com.innoq.bpelcam.processors.ContentPrinter;
 import com.innoq.bpelcam.processors.ContentsProcessor;
 import com.innoq.bpelcam.processors.ResponseBuilderProcessor;
 
+/**
+ * This Routebuilder here just takes the role of external Service-Providers, providing
+ * Webservice-Endpoints for the test.
+ * 
+ * @author martinh
+ *
+ */
 public class WebservicesRouter extends RouteBuilder {
 
 	@Override

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/external/">
+	<xsd:element name="sendSignedDocument">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="processId" type="xsd:string" />
+				<xsd:element name="pdf" type="xsd:base64Binary" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="sendSignedDocumentResponse">
+		<xsd:complexType>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="makeApplication">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="processId" type="xsd:string" />
+				<xsd:element name="someData" type="xsd:string" />
+				<xsd:element name="document" type="xsd:base64Binary">
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="makeApplicationResponse">
+		<xsd:complexType>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

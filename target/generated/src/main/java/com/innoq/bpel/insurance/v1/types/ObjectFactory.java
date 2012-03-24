@@ -30,6 +30,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CarInsuranceFindProcess }
+     * 
+     */
+    public CarInsuranceFindProcess createCarInsuranceFindProcess() {
+        return new CarInsuranceFindProcess();
+    }
+
+    /**
      * Create an instance of {@link ProcessConfirmation }
      * 
      */
@@ -43,14 +51,6 @@ public class ObjectFactory {
      */
     public Car createCar() {
         return new Car();
-    }
-
-    /**
-     * Create an instance of {@link CarInsuranceFindProcess }
-     * 
-     */
-    public CarInsuranceFindProcess createCarInsuranceFindProcess() {
-        return new CarInsuranceFindProcess();
     }
 
 }

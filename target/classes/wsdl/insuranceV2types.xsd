@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://bpel.innoq.com/insurance/v2/types"
+	xmlns:tns="http://bpel.innoq.com/insurance/v2/types"
+	elementFormDefault="qualified" >
+
+	<xs:element name="car" >
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element type="xs:string" name="fabricant"/>
+				<xs:element type="xs:string" name="model"/>
+				<xs:element type="xs:string" name="horsepower"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="oldInsurance" >
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element type="xs:string" name="insuranceSpecifications" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="CarInsuranceFindProcess">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element type="xs:int" name="targetVersion" />
+				<xs:element type="xs:string" name="customerName" />
+				<xs:element type="xs:string" name="addressline" />
+				<xs:element type="xs:int" name="yearswithdrivinglicense" />
+				<xs:element ref="tns:car" />
+				<xs:element ref="tns:oldInsurance" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="processConfirmation">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element type="xs:string" name="resultCode" />
+				<xs:element type="xs:int" name="processId" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

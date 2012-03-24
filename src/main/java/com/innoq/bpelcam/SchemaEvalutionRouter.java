@@ -7,7 +7,14 @@ import com.innoq.bpelcam.processors.ContentPrinter;
 import com.innoq.bpelcam.processors.PrintHeaderProcessor;
 import com.innoq.bpelcam.processors.V1TransformerBean;
 
-
+/**
+ * This takes webservice-calls via a Camel-Http-Endpoint - Analyzes the Schema and forwards to 
+ * the actual webservice of BPMS or other Service-Providers (here only in example).
+ * 
+ * 
+ * @author martinh
+ *
+ */
 public class SchemaEvalutionRouter extends RouteBuilder {
 
 	@Override
@@ -17,7 +24,7 @@ public class SchemaEvalutionRouter extends RouteBuilder {
 		Namespaces ns_v1 = new Namespaces("c1", "http://bpel.innoq.com/insurance/v1/types");
 		Namespaces ns_v2 = new Namespaces("c2", "http://bpel.innoq.com/insurance/v2/types");
 	
-		from("jetty:http://localhost:9080/insuranceservice?minThreads=5")
+		from("jetty:http://0.0.0.0:9080/insuranceservice?minThreads=5")
 			.process(new ContentPrinter())
 			.process(new PrintHeaderProcessor())
 			.choice()

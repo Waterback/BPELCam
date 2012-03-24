@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/internal/">
+	<xsd:element name="sendSignedDocument">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="documentRef" type="xsd:string" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="sendSignedDocumentResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="makeApplication">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="processId" type="xsd:string" />
+				<xsd:element name="someData" type="xsd:string"></xsd:element>
+				<xsd:element name="documentRef" type="xsd:string"></xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="makeApplicationResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="out" type="xsd:string"></xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

@@ -7,17 +7,12 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.apache.camel.Body;
-import org.apache.camel.language.NamespacePrefix;
-import org.apache.camel.language.XPath;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.Namespace;
-import org.jdom.Parent;
 import org.jdom.filter.ElementFilter;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.XMLOutputter;
-
-import com.innoq.xml.Algos.Pair;
 
 public class V1TransformerBean {
 

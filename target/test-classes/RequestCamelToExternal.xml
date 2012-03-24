@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:makeApplication xmlns:p="http://www.example.org/external/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/external/ external.xsd ">
+  <someData>some Data</someData>
+  <document>MA==</document>
+</p:makeApplication>

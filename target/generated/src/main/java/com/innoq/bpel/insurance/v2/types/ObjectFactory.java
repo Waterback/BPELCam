@@ -38,19 +38,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ProcessConfirmation }
-     * 
-     */
-    public ProcessConfirmation createProcessConfirmation() {
-        return new ProcessConfirmation();
-    }
-
-    /**
      * Create an instance of {@link CarInsuranceFindProcess }
      * 
      */
     public CarInsuranceFindProcess createCarInsuranceFindProcess() {
         return new CarInsuranceFindProcess();
+    }
+
+    /**
+     * Create an instance of {@link ProcessConfirmation }
+     * 
+     */
+    public ProcessConfirmation createProcessConfirmation() {
+        return new ProcessConfirmation();
     }
 
     /**

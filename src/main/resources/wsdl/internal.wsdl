@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/internal/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="internal" targetNamespace="http://www.example.org/internal/">
+  <wsdl:types>
+    <xsd:schema>
+    	<xsd:import namespace="http://www.example.org/internal/" schemaLocation="internal.xsd" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="sendSignedDocumentRequest">
+    <wsdl:part element="tns:sendSignedDocument" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="sendSignedDocumentResponse">
+    <wsdl:part element="tns:sendSignedDocumentResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="makeApplicationRequest">
+  	<wsdl:part name="parameters" element="tns:makeApplication"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="makeApplicationResponse">
+  	<wsdl:part name="parameters" element="tns:makeApplicationResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="Process">
+    <wsdl:operation name="sendSignedDocument">
+      <wsdl:input message="tns:sendSignedDocumentRequest"/>
+      <wsdl:output message="tns:sendSignedDocumentResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Authority">
+  	<wsdl:operation name="makeApplication">
+  		<wsdl:input message="tns:makeApplicationRequest"></wsdl:input>
+  		<wsdl:output message="tns:makeApplicationResponse"></wsdl:output>
+  	</wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="internalSOAP" type="tns:Process">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="sendSignedDocument">
+      <soap:operation soapAction="http://www.example.org/internal/sendSignedDocument"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AuthoritySOAP" type="tns:Authority">
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="makeApplication">
+  		<soap:operation
+  			soapAction="http://www.example.org/internal/makeApplication" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Process">
+    <wsdl:port binding="tns:internalSOAP" name="processSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:service name="Authority">
+  	<wsdl:port name="AuthoritySOAP" binding="tns:AuthoritySOAP">
+  		<soap:address location="http://www.example.org/" />
+  	</wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

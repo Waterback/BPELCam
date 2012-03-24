@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:makeApplication xmlns:p="http://www.example.org/internal/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/internal/ internal.xsd ">
+  <someData>some Data</someData>
+  <documentRef>REF:123:412312312</documentRef>
+</p:makeApplication>

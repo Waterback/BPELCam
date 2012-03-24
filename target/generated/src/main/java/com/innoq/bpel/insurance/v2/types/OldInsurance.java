@@ -1,9 +1,10 @@
 
 package com.innoq.bpel.insurance.v2.types;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -18,9 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="company" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="fee" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="insuranceSpecifications" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,90 +30,40 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "company",
-    "type",
-    "fee"
+    "insuranceSpecifications"
 })
 @XmlRootElement(name = "oldInsurance")
 public class OldInsurance {
 
-    @XmlElement(required = true)
-    protected String company;
-    @XmlElement(required = true)
-    protected String type;
-    @XmlElement(required = true)
-    protected String fee;
+    protected List<String> insuranceSpecifications;
 
     /**
-     * Gets the value of the company property.
+     * Gets the value of the insuranceSpecifications property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCompany() {
-        return company;
-    }
-
-    /**
-     * Sets the value of the company property.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the insuranceSpecifications property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCompany(String value) {
-        this.company = value;
-    }
-
-    /**
-     * Gets the value of the type property.
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getInsuranceSpecifications().add(newItem);
+     * </pre>
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getType() {
-        return type;
-    }
-
-    /**
-     * Sets the value of the type property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setType(String value) {
-        this.type = value;
-    }
-
-    /**
-     * Gets the value of the fee property.
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getFee() {
-        return fee;
-    }
-
-    /**
-     * Sets the value of the fee property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
      */
-    public void setFee(String value) {
-        this.fee = value;
+    public List<String> getInsuranceSpecifications() {
+        if (insuranceSpecifications == null) {
+            insuranceSpecifications = new ArrayList<String>();
+        }
+        return this.insuranceSpecifications;
     }
 
 }
