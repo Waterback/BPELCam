@@ -26,7 +26,7 @@ import com.innoq.bpelcam.processors.ExternalToInternalConverter;
  * @author martinh
  *
  */
-public class FileEntrePot extends RouteBuilder {
+public class FileEntrePost extends RouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
